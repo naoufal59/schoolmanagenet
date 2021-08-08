@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Language" content="en">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Courses Form</title>
+<title>Courses table</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
 <meta name="description"
@@ -167,13 +167,13 @@
 									class="metismenu-icon pe-7s-rocket"></i> Dashboard
 							</a></li>
 
-							<li><a th:href="admintablecourse"> <i
+							<li><a th:href="admintablecourse" class="mm-active"> <i
 									class="metismenu-icon pe-7s-display2"></i> Tables
 							</a></li>
 
 
 							<li class="app-sidebar__heading">Forms</li>
-							<li><a th:href="adminCourseForm" class="mm-active"> <i
+							<li><a th:href="adminCourseForm" > <i
 									class="metismenu-icon pe-7s-mouse"> </i>Courses Forms
 							</a></li>
 
@@ -194,66 +194,44 @@
 								<div class="col-md-12">
 									<div class="main-card mb-3 card">
 										<div class="card-body">
-											<h5 class="card-title">Course form</h5>
-											<form class="" th:action="save" method="post">
-												<div class="position-relative form-group">
-													<label for="exampleEmail" class="">course Title</label> <input
-														name="courseTitle" th:value="${course.courseTitle}"
-														id="exampleEmail" placeholder="title  "
-														type="text" class="form-control">
-												</div>
+											<h5 class="card-title">Courses table</h5>
 											 
-												<div class="position-relative form-group">
-													<label for="examplePassword" class="">course Video
-														ID</label><input name="courseVideoID"
-														th:value="${course.courseVideoID}" id="examplePassword"
-														placeholder="course VideoID  " type="text"
-														class="form-control">
-												</div>
-												<div class="position-relative form-group">
-													<label for="examplePassword" class="">course drive
-														Link</label><input name="courseDriveLink"
-														th:value="${course.courseDriveLink}" id="examplePassword"
-														placeholder="course drive link  " type="text"
-														class="form-control">
-												</div>
-												<div class="position-relative form-group">
-													<label for="examplePassword" class="">course
-														publish date</label><input name="coursePublish"
-														th:value="${course.coursePublish}" id="examplePassword"
-														placeholder="course publish date placeholder" type="date"
-														class="form-control">
-												</div>
-												<div class="position-relative form-group">
-													<label for="exampleSelect" class="">Select Category</label>
-													<select name="code" class="form-control">
-														<option th:each="t:${categories}"
-															th:text="${t.categoryTitle}" th:value="${t.idcategory}"></option>
-													</select>
-												</div>
-
-												<div class="position-relative form-group">
-													<label for="exampleText" class="">Content</label>
-													<textarea name="courseDescription"
-														th:value="${course.courseDescription}" id="exampleText"
-														class="form-control"></textarea>
-												</div>
-												<div class="position-relative form-group">
-													<label for="exampleFile" class="">File</label><input
-														type="file" name="image" accept="image/png, image/jpeg"
-														id="exampleFile" class="form-control-file"> <small
-														class="form-text text-muted"> </small>
-												</div>
-												<button type="submit" class="mt-1 btn btn-primary">Submit</button>
-											</form>
-										</div>
+                                    <table class="mb-0 table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                 
+                                                <th>course title</th>
+                                                <th>course description</th>
+                                                <th>course publish date</th>
+                                                <th>category</th>
+                                                <th>pictures</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            <tr th:each="e:${courses}">
+                                                 
+                                                <td th:text="${e.courseTitle}"> </td>
+                                                <td th:text="${e.courseDescription}"> </td>
+                                                <td th:text="${e.coursePublish}"></td>
+                                                <td th:text="${e.category.categoryTitle}"></td>
+                                                
+                                                <td ><img alt="" height="100" width="100" th:src="${e.getPhotosImagePath()}"> </td>
+                                            </tr>
+<!--                                             '/courses-photos/' -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                              
+											
+											</div>
 									</div>
 								</div>
 
 							</div>
 						</div>
 
-					</div>
+					 
 				</div>
 				<div class="app-wrapper-footer">
 					<div class="app-footer">
